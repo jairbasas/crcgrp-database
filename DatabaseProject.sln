@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SGA", "SGA\SGA.sqlproj", "{0F665A2A-38BA-48D9-AF54-CEF8399A9055}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SGL", "SGL\SGL.sqlproj", "{6AD56AAB-76C7-42DC-A1AF-019808476F67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F665A2A-38BA-48D9-AF54-CEF8399A9055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F665A2A-38BA-48D9-AF54-CEF8399A9055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F665A2A-38BA-48D9-AF54-CEF8399A9055}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0F665A2A-38BA-48D9-AF54-CEF8399A9055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F665A2A-38BA-48D9-AF54-CEF8399A9055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F665A2A-38BA-48D9-AF54-CEF8399A9055}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6AD56AAB-76C7-42DC-A1AF-019808476F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AD56AAB-76C7-42DC-A1AF-019808476F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AD56AAB-76C7-42DC-A1AF-019808476F67}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6AD56AAB-76C7-42DC-A1AF-019808476F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AD56AAB-76C7-42DC-A1AF-019808476F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AD56AAB-76C7-42DC-A1AF-019808476F67}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDD113AC-1BF1-4A2D-AD4A-7E3526FC4033}
+	EndGlobalSection
+EndGlobal
