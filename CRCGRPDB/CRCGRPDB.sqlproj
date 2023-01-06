@@ -116,6 +116,15 @@
     <Build Include="Programming\StoreProcedures\REMUNERATIVE_DATA_find_all.sql" />
     <Build Include="Programming\StoreProcedures\REMUNERATIVE_DATA_insert_update.sql" />
     <Build Include="Programming\StoreProcedures\REMUNERATIVE_DATA_search.sql" />
+    <Build Include="Programming\StoreProcedures\REMUNERATIVE_PERIODICITY_search.sql" />
+    <Build Include="Programming\StoreProcedures\REMUNERATIVE_PERIODICITY_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\REMUNERATIVE_PERIODICITY_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\SALARY_PAYMENT_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\SALARY_PAYMENT_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\SALARY_PAYMENT_search.sql" />
+    <Build Include="Programming\StoreProcedures\WORKING_PERIOD_search.sql" />
+    <Build Include="Programming\StoreProcedures\WORKING_PERIOD_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\WORKING_PERIOD_find_all.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

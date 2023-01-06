@@ -1,7 +1,7 @@
 ﻿CREATE TABLE EMPLOYEES.INCOME_DISCOUNT
 ( 
 	employee_id          integer  NOT NULL ,
-	code                 varchar(20)  NULL ,
+	code                 varchar(20)  NOT NULL ,
 	description          varchar(200)  NULL ,
 	currency_id          varchar(20)  NULL ,
 	amount               decimal(18,2)  NULL ,
@@ -16,7 +16,7 @@
 go
 
 ALTER TABLE EMPLOYEES.INCOME_DISCOUNT
-	ADD CONSTRAINT PK_EMPLOYEES_INCOME_DISCOUNT PRIMARY KEY  CLUSTERED (employee_id ASC)
+	ADD CONSTRAINT PK_EMPLOYEES_INCOME_DISCOUNT PRIMARY KEY  CLUSTERED (employee_id, code ASC)
 go
 
 ALTER TABLE EMPLOYEES.INCOME_DISCOUNT

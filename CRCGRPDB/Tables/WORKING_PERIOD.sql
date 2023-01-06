@@ -2,7 +2,7 @@
 ( 
 	employee_id          integer  NOT NULL ,
 	date_admission       datetime  NULL ,
-	hour_day             numeric(4,2)  NULL ,
+	hour_day             decimal(4,2)  NULL ,
 	shift_id             varchar(20)  NULL ,
 	tareo_diario         integer  NULL ,
 	extra_hour_tareo     integer  NULL ,
