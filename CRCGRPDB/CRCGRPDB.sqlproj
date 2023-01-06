@@ -96,6 +96,11 @@
     <Build Include="Tables\PARAMETER_DETAIL.sql" />
     <Build Include="Tables\USERS.sql" />
     <Build Include="Tables\WORKING_PERIOD.sql" />
+    <Build Include="Tables\COMPENSATION_PAYMENT.sql" />
+    <Build Include="Tables\INCOME_DISCOUNT.sql" />
+    <Build Include="Tables\REMUNERATIVE_DATA.sql" />
+    <Build Include="Tables\REMUNERATIVE_PERIODICITY.sql" />
+    <Build Include="Tables\SALARY_PAYMENT.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
