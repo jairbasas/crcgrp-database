@@ -32731,10 +32731,10 @@ BEGIN
 	    ) SELECT '02','EPS', @sctr_id
 END;
 
-DECLARE @sctr_pension VARCHAR(100) = 'SCTR SALUD';
-DECLARE @sctr_pension_id INT;
+DECLARE @sctr_salud VARCHAR(100) = 'SCTR SALUD';
+DECLARE @sctr_salud_id INT;
 
-IF NOT EXISTS (SELECT * FROM TRANSVERSAL.PARAMETER P WHERE P.parameter_name = @sctr_pension)
+IF NOT EXISTS (SELECT * FROM TRANSVERSAL.PARAMETER P WHERE P.parameter_name = @sctr_salud)
 BEGIN
     INSERT INTO	TRANSVERSAL.PARAMETER
     (
@@ -32742,29 +32742,29 @@ BEGIN
         state
     )
     VALUES
-    (   @sctr_pension, -- parameter_name - varchar(300)
+    (   @sctr_salud, -- parameter_name - varchar(300)
         1  -- state - int
         );
-	SET @sctr_pension_id = SCOPE_IDENTITY();
+	SET @sctr_salud_id = SCOPE_IDENTITY();
 
 	INSERT INTO TRANSVERSAL.PARAMETER_DETAIL
 	    (
 	        field_value_1,
 	        field_description_1,
 	        parameter_id
-	    ) SELECT '00','NINGUNO', @sctr_pension_id
+	    ) SELECT '00','NINGUNO', @sctr_salud_id
 	INSERT INTO TRANSVERSAL.PARAMETER_DETAIL
 	    (
 	        field_value_1,
 	        field_description_1,
 	        parameter_id
-	    ) SELECT '01','ONP', @sctr_pension_id
+	    ) SELECT '01','ONP', @sctr_salud_id
 	INSERT INTO TRANSVERSAL.PARAMETER_DETAIL
 	    (
 	        field_value_1,
 	        field_description_1,
 	        parameter_id
-	    ) SELECT '02','SEGURO PRIVADO', @sctr_pension_id
+	    ) SELECT '02','SEGURO PRIVADO', @sctr_salud_id
 END;
 
 

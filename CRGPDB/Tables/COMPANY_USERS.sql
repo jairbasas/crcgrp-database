@@ -3,13 +3,13 @@
 	company_user_id      integer IDENTITY ( 1,1 ) ,
 	user_id              integer  NULL ,
 	company_id           integer  NULL ,
+	state                integer  NULL,
 	register_user_id     integer  NULL ,
 	register_user_fullname varchar(250)  NULL ,
 	register_datetime    datetime  NULL ,
 	update_user_id       integer  NULL ,
 	update_user_fullname varchar(250)  NULL ,
-	update_datetime      datetime  NULL ,
-	state                integer  NULL 
+	update_datetime      datetime  NULL 
 )
 go
 
