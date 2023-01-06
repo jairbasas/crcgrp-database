@@ -1,7 +1,7 @@
 ﻿CREATE TABLE EMPLOYEES.LABOR_DATA
 ( 
 	employee_id          integer  NOT NULL ,
-	salary_advance       numeric(4,2)  NULL ,
+	salary_advance       decimal(4,2)  NULL ,
 	reference            varchar(400)  NULL ,
 	test_end_date        datetime  NULL ,
 	employee_type_id     varchar(20)  NULL ,

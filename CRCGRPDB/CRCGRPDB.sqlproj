@@ -101,6 +101,21 @@
     <Build Include="Tables\REMUNERATIVE_DATA.sql" />
     <Build Include="Tables\REMUNERATIVE_PERIODICITY.sql" />
     <Build Include="Tables\SALARY_PAYMENT.sql" />
+    <Build Include="Programming\StoreProcedures\COMPENSATION_PAYMENT_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\COMPENSATION_PAYMENT_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\COMPENSATION_PAYMENT_search.sql" />
+    <Build Include="Programming\StoreProcedures\CONTRACT_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\CONTRACT_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\CONTRACT_search.sql" />
+    <Build Include="Programming\StoreProcedures\INCOME_DISCOUNT_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\INCOME_DISCOUNT_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\INCOME_DISCOUNT_search.sql" />
+    <Build Include="Programming\StoreProcedures\LABOR_DATA_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\LABOR_DATA_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\LABOR_DATA_search.sql" />
+    <Build Include="Programming\StoreProcedures\REMUNERATIVE_DATA_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\REMUNERATIVE_DATA_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\REMUNERATIVE_DATA_search.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

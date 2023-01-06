@@ -4,7 +4,7 @@
 	code                 varchar(20)  NULL ,
 	description          varchar(200)  NULL ,
 	currency_id          varchar(20)  NULL ,
-	amount               numeric(18,2)  NULL ,
+	amount               decimal(18,2)  NULL ,
 	state                bit  NULL ,
 	register_user_id     integer  NULL ,
 	register_user_fullname varchar(250)  NULL ,
