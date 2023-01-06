@@ -90,6 +90,12 @@
     <Build Include="Tables\CONTRACT.sql" />
     <Build Include="Tables\LABOR_DATA.sql" />
     <Build Include="Tables\WORKING_PERIOD.sql" />
+    <Build Include="Programming\StoreProcedures\EMPLOYEE_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\EMPLOYEE_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\EMPLOYEE_search.sql" />
+    <Build Include="Programming\StoreProcedures\MAIN_DATA_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\MAIN_DATA_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\MAIN_DATA_search.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
