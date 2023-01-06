@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SGA", "SGA\SGA.sqlproj", "{0F665A2A-38BA-48D9-AF54-CEF8399A9055}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CRGPDB", "CRGPDB\CRGPDB.sqlproj", "{1390F519-6378-4471-A3B1-786F02098427}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CRCGRPDB", "CRCGRPDB\CRCGRPDB.sqlproj", "{2B447355-1873-403D-BAB7-D19F850F6D9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +19,12 @@ Global
 		{0F665A2A-38BA-48D9-AF54-CEF8399A9055}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F665A2A-38BA-48D9-AF54-CEF8399A9055}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F665A2A-38BA-48D9-AF54-CEF8399A9055}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{1390F519-6378-4471-A3B1-786F02098427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1390F519-6378-4471-A3B1-786F02098427}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1390F519-6378-4471-A3B1-786F02098427}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{1390F519-6378-4471-A3B1-786F02098427}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1390F519-6378-4471-A3B1-786F02098427}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1390F519-6378-4471-A3B1-786F02098427}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2B447355-1873-403D-BAB7-D19F850F6D9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B447355-1873-403D-BAB7-D19F850F6D9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B447355-1873-403D-BAB7-D19F850F6D9A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2B447355-1873-403D-BAB7-D19F850F6D9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B447355-1873-403D-BAB7-D19F850F6D9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B447355-1873-403D-BAB7-D19F850F6D9A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
