@@ -84,6 +84,9 @@
     <Build Include="Tables\PARAMETER.sql" />
     <Build Include="Tables\PARAMETER_DETAIL.sql" />
     <Build Include="Tables\USERS.sql" />
+    <Build Include="Security\Schemas\EMPLOYEES.sql" />
+    <Build Include="Tables\EMPLOYEE.sql" />
+    <Build Include="Tables\MAIN_DATA.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
