@@ -108,6 +108,35 @@ BEGIN
     SELECT @profile_admin_id = profile_id FROM SECURITY.PROFILE WHERE profile_name = @profile_admin
 END
 
+DECLARE @profile_admin_cliente VARCHAR(100) = 'Administrador Cliente';
+
+IF NOT EXISTS (SELECT * FROM SECURITY.PROFILE WHERE profile_name = @profile_admin_cliente)
+BEGIN
+    INSERT INTO	 SECURITY.PROFILE
+    (
+        profile_name,
+        state,
+        system_id,
+        register_user_id,
+        register_user_fullname,
+        register_datetime,
+        update_user_id,
+        update_user_fullname,
+        update_datetime
+    )
+    VALUES
+    (   @profile_admin_cliente, -- profile_name - varchar(200)
+        1, -- state - int
+        1, -- system_id - int
+        0, -- register_user_id - int
+        'SYSTEM', -- register_user_fullname - varchar(250)
+        GETDATE(), -- register_datetime - datetime
+        0, -- update_user_id - int
+        'SYSTEM', -- update_user_fullname - varchar(250)
+        GETDATE()  -- update_datetime - datetime
+        )
+END;
+
 IF NOT EXISTS (SELECT * FROM SECURITY.PROFILE WHERE profile_name = @profile_supervisor)
 BEGIN
     INSERT INTO	 SECURITY.PROFILE
@@ -161,36 +190,6 @@ BEGIN
         GETDATE()  -- update_datetime - datetime
         )
 END;
-
-DECLARE @profile_admin_cliente VARCHAR(100) = 'Administrador Cliente';
-
-IF NOT EXISTS (SELECT * FROM SECURITY.PROFILE WHERE profile_name = @profile_admin_cliente)
-BEGIN
-    INSERT INTO	 SECURITY.PROFILE
-    (
-        profile_name,
-        state,
-        system_id,
-        register_user_id,
-        register_user_fullname,
-        register_datetime,
-        update_user_id,
-        update_user_fullname,
-        update_datetime
-    )
-    VALUES
-    (   @profile_admin_cliente, -- profile_name - varchar(200)
-        1, -- state - int
-        1, -- system_id - int
-        0, -- register_user_id - int
-        'SYSTEM', -- register_user_fullname - varchar(250)
-        GETDATE(), -- register_datetime - datetime
-        0, -- update_user_id - int
-        'SYSTEM', -- update_user_fullname - varchar(250)
-        GETDATE()  -- update_datetime - datetime
-        )
-END;
-
 
 DECLARE @menu_security_name VARCHAR(100) = 'Seguridad';
 DECLARE @menu_security_id INT;

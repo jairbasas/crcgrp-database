@@ -125,6 +125,26 @@
     <Build Include="Programming\StoreProcedures\WORKING_PERIOD_search.sql" />
     <Build Include="Programming\StoreProcedures\WORKING_PERIOD_insert_update.sql" />
     <Build Include="Programming\StoreProcedures\WORKING_PERIOD_find_all.sql" />
+    <Build Include="Tables\HEALTH_BENEFITS.sql" />
+    <Build Include="Tables\LABOR_TAX_DATA.sql" />
+    <Build Include="Tables\SCTR.sql" />
+    <Build Include="Tables\SUNAT_DATA.sql" />
+    <Build Include="Tables\SUNAT_REMUNERATION_DATA.sql" />
+    <Build Include="Programming\StoreProcedures\HEALTH_BENEFITS_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\HEALTH_BENEFITS_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\HEALTH_BENEFITS_search.sql" />
+    <Build Include="Programming\StoreProcedures\LABOR_TAX_DATA_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\LABOR_TAX_DATA_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\LABOR_TAX_DATA_search.sql" />
+    <Build Include="Programming\StoreProcedures\SCTR_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\SCTR_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\SCTR_search.sql" />
+    <Build Include="Programming\StoreProcedures\SUNAT_DATA_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\SUNAT_DATA_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\SUNAT_DATA_search.sql" />
+    <Build Include="Programming\StoreProcedures\SUNAT_REMUNERATION_DATA_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\SUNAT_REMUNERATION_DATA_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\SUNAT_REMUNERATION_DATA_search.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
