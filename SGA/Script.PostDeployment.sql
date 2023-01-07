@@ -333,3 +333,177 @@ BEGIN
     INSERT SECURITY.PROFILE_MENU
 	SELECT @profile_admin_id, menu_id, 0, 'SYSTEM', GETDATE(), 0, 'SYSTEM', GETDATE() FROM SECURITY.MENU
 END;
+
+DECLARE @menu_cliente VARCHAR(100) = 'Clientes';
+DECLARE @menu_cliente_id INT;
+
+IF NOT EXISTS (SELECT * FROM SECURITY.MENU M WHERE M.menu_name = @menu_cliente)
+BEGIN
+    INSERT INTO SECURITY.MENU
+    (
+        menu_name,
+        level,
+        url,
+        icon,
+        [order],
+        menu_parent_id,
+        state,
+        register_user_id,
+        register_user_fullname,
+        register_datetime,
+        update_user_id,
+        update_user_fullname,
+        update_datetime
+    )
+    VALUES
+    (   @menu_cliente, -- menu_name - varchar(300)
+        1, -- level - int
+        NULL, -- url - varchar(300)
+        'icard',   -- icon - varchar(300)
+        1, -- order - int
+        NULL, -- menu_parent_id - int
+        1, -- state - int
+        0, -- register_user_id - int
+        'SYSTEM', -- register_user_fullname - varchar(250)
+        GETDATE(), -- register_datetime - datetime
+        0, -- update_user_id - int
+        'SYSTEM', -- update_user_fullname - varchar(250)
+        GETDATE()  -- update_datetime - varchar(20)
+        );
+	SET @menu_cliente_id = SCOPE_IDENTITY();
+
+	INSERT INTO SECURITY.MENU
+    (
+        menu_name,
+        level,
+        url,
+        icon,
+        [order],
+        menu_parent_id,
+        state,
+        register_user_id,
+        register_user_fullname,
+        register_datetime,
+        update_user_id,
+        update_user_fullname,
+        update_datetime
+    )
+    VALUES
+    (   'Bandeja Clientes', -- menu_name - varchar(300)
+        2, -- level - int
+        '/customers-tray', -- url - varchar(300)
+        'team',   -- icon - varchar(300)
+        1, -- order - int
+        @menu_cliente_id, -- menu_parent_id - int
+        1, -- state - int
+        0, -- register_user_id - int
+        'SYSTEM', -- register_user_fullname - varchar(250)
+        GETDATE(), -- register_datetime - datetime
+        0, -- update_user_id - int
+        'SYSTEM', -- update_user_fullname - varchar(250)
+        GETDATE()  -- update_datetime - varchar(20)
+        );
+
+	INSERT INTO SECURITY.MENU
+    (
+        menu_name,
+        level,
+        url,
+        icon,
+        [order],
+        menu_parent_id,
+        state,
+        register_user_id,
+        register_user_fullname,
+        register_datetime,
+        update_user_id,
+        update_user_fullname,
+        update_datetime
+    )
+    VALUES
+    (   'Bandeja Asignación Cliente', -- menu_name - varchar(300)
+        2, -- level - int
+        '/customer-assignment-tray', -- url - varchar(300)
+        'user-switch',   -- icon - varchar(300)
+        2, -- order - int
+        @menu_cliente_id, -- menu_parent_id - int
+        1, -- state - int
+        0, -- register_user_id - int
+        'SYSTEM', -- register_user_fullname - varchar(250)
+        GETDATE(), -- register_datetime - datetime
+        0, -- update_user_id - int
+        'SYSTEM', -- update_user_fullname - varchar(250)
+        GETDATE()  -- update_datetime - varchar(20)
+        );
+END;
+
+DECLARE @menu_trabajador VARCHAR(100) = 'Trabajadores';
+DECLARE @menu_trabajador_id INT;
+
+IF NOT EXISTS (SELECT * FROM SECURITY.MENU M WHERE M.menu_name = @menu_trabajador)
+BEGIN
+    INSERT INTO SECURITY.MENU
+    (
+        menu_name,
+        level,
+        url,
+        icon,
+        [order],
+        menu_parent_id,
+        state,
+        register_user_id,
+        register_user_fullname,
+        register_datetime,
+        update_user_id,
+        update_user_fullname,
+        update_datetime
+    )
+    VALUES
+    (   @menu_trabajador, -- menu_name - varchar(300)
+        1, -- level - int
+        NULL, -- url - varchar(300)
+        'icard',   -- icon - varchar(300)
+        1, -- order - int
+        NULL, -- menu_parent_id - int
+        1, -- state - int
+        0, -- register_user_id - int
+        'SYSTEM', -- register_user_fullname - varchar(250)
+        GETDATE(), -- register_datetime - datetime
+        0, -- update_user_id - int
+        'SYSTEM', -- update_user_fullname - varchar(250)
+        GETDATE()  -- update_datetime - varchar(20)
+        );
+	SET @menu_trabajador_id = SCOPE_IDENTITY();
+
+	INSERT INTO SECURITY.MENU
+    (
+        menu_name,
+        level,
+        url,
+        icon,
+        [order],
+        menu_parent_id,
+        state,
+        register_user_id,
+        register_user_fullname,
+        register_datetime,
+        update_user_id,
+        update_user_fullname,
+        update_datetime
+    )
+    VALUES
+    (   'Bandeja Trabajadores', -- menu_name - varchar(300)
+        1, -- level - int
+        '/employees-tray', -- url - varchar(300)
+        'team',   -- icon - varchar(300)
+        1, -- order - int
+        @menu_trabajador_id, -- menu_parent_id - int
+        1, -- state - int
+        0, -- register_user_id - int
+        'SYSTEM', -- register_user_fullname - varchar(250)
+        GETDATE(), -- register_datetime - datetime
+        0, -- update_user_id - int
+        'SYSTEM', -- update_user_fullname - varchar(250)
+        GETDATE()  -- update_datetime - varchar(20)
+        );
+END;
