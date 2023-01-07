@@ -9,7 +9,7 @@ As
 Declare @sqlBody varchar(max),@sqlJoin varchar(max),@sqlWhere varchar(max);
 
 -- VARIABLES DE FILTRO
-Declare @docXML int,@pii_company_user_id int
+Declare @docXML int,@pii_company_user_id INT, @company_id INT, @user_id INT;
 
 Begin
 
@@ -37,6 +37,32 @@ Begin
 		End Try
 		Begin Catch
 			Set @pii_company_user_id = 0;
+		End Catch;
+
+		--company_id
+		Begin Try
+			Set @company_id = 
+			(
+				Select company_id
+				From OpenXML (@docXML, 'Record',2)
+				With (company_id int)
+			);
+		End Try
+		Begin Catch
+			Set @company_id = 0;
+		End Catch;
+
+		--user_id
+		Begin Try
+			Set @user_id = 
+			(
+				Select user_id
+				From OpenXML (@docXML, 'Record',2)
+				With (user_id int)
+			);
+		End Try
+		Begin Catch
+			Set @user_id = 0;
 		End Catch;
 
 	End;
@@ -72,6 +98,20 @@ Begin
 			Begin
 				Set @sqlWhere = @sqlWhere + '
 				And DB.company_user_id = ' + Cast(@pii_company_user_id As Varchar) + ''
+			End;
+
+			--company_id
+			If @company_id > 0
+			Begin
+				Set @sqlWhere = @sqlWhere + '
+				And DB.company_id = ' + Cast(@company_id As Varchar) + ''
+			End;
+
+			--user_id
+			If @user_id > 0
+			Begin
+				Set @sqlWhere = @sqlWhere + '
+				And DB.user_id = ' + Cast(@user_id As Varchar) + ''
 			End;
 		End;
 

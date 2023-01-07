@@ -22,6 +22,7 @@ Begin
 
 		Insert Into TRANSVERSAL.USERS
 		(
+			user_id,
 			user_name,
 			father_last_name,
 			mother_last_name,
@@ -37,6 +38,7 @@ Begin
 		)
 		Values
 		(
+			@poi_user_id,
 			@piv_user_name,
 			@piv_father_last_name,
 			@piv_mother_last_name,
@@ -51,7 +53,7 @@ Begin
 			@pid_update_datetime
 		);
 
-		Set @poi_user_id = SCOPE_IDENTITY();
+		--Set @poi_user_id = SCOPE_IDENTITY();
 
 	End
 	Begin

@@ -13,7 +13,8 @@ BEGIN
 		   ,U.mother_last_name
 		   ,U.email
 		   ,U.state
-		FROM SECURITY.users U
+		   ,UP.profile_id
+		FROM SECURITY.users U INNER JOIN SECURITY.USERS_PROFILE UP ON UP.user_id = U.user_id
 		WHERE U.login = @pi_login AND DECRYPTBYPASSPHRASE('password', U.password)  = @pi_password;
 
 END;
