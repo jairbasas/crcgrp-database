@@ -9,12 +9,12 @@ As
 Declare @sqlBody varchar(max),@sqlJoin varchar(max),@sqlWhere varchar(max);
 
 -- VARIABLES DE FILTRO
-Declare @docXML int,@pii_user_id int
+Declare @docXML int,@pii_user_id INT, @company_id INT;
 
 Begin
 
 	--EXECUTE TRANSVERSAL.USERS_search '<Record> <user_id>1</user_id> </Record>', '';
-
+	--EXECUTE TRANSVERSAL.USERS_search '<Record> <company_id>3</company_id> </Record>', '';
 	--INICIALIZO LAS VARIABLES
   Begin
 
@@ -37,6 +37,19 @@ Begin
 		End Try
 		Begin Catch
 			Set @pii_user_id = 0;
+		End Catch;
+
+		--company_id
+		Begin Try
+			Set @company_id = 
+			(
+				Select company_id
+				From OpenXML (@docXML, 'Record',2)
+				With (company_id int)
+			);
+		End Try
+		Begin Catch
+			Set @company_id = 0;
 		End Catch;
 
 	End;
@@ -75,6 +88,13 @@ Begin
 			Begin
 				Set @sqlWhere = @sqlWhere + '
 				And DB.user_id = ' + Cast(@pii_user_id As Varchar) + ''
+			End;
+
+			--company_id
+			If @company_id > 0
+			Begin
+				Set @sqlWhere = @sqlWhere + '
+				And DB.user_id IN (SELECT CU.user_id FROM TRANSVERSAL.COMPANY_USERS CU WHERE CU.company_id = ' + Cast(@company_id As Varchar) + ' AND CU.state = 1)'
 			End;
 		End;
 

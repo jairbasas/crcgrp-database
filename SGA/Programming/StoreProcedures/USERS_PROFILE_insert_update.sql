@@ -17,6 +17,7 @@ Begin
 
 		Insert Into SECURITY.USERS_PROFILE
 		(
+			user_id,
 			profile_id,
 			register_user_id,
 			register_user_fullname,
@@ -27,6 +28,7 @@ Begin
 		)
 		Values
 		(
+			@poi_user_id,
 			@pii_profile_id,
 			@pii_register_user_id,
 			@piv_register_user_fullname,
@@ -36,7 +38,7 @@ Begin
 			@pid_update_datetime
 		);
 
-		Set @poi_user_id = SCOPE_IDENTITY();
+		--Set @poi_user_id = SCOPE_IDENTITY();
 
 	End
 	Begin
