@@ -83,7 +83,7 @@ Begin
 			@pid_update_datetime
 		);
 
-		Set @poi_employee_id = SCOPE_IDENTITY();
+		--Set @poi_employee_id = SCOPE_IDENTITY();
 
 	End
 	Begin

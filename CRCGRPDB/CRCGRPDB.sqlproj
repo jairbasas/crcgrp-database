@@ -145,6 +145,7 @@
     <Build Include="Programming\StoreProcedures\SUNAT_REMUNERATION_DATA_find_all.sql" />
     <Build Include="Programming\StoreProcedures\SUNAT_REMUNERATION_DATA_insert_update.sql" />
     <Build Include="Programming\StoreProcedures\SUNAT_REMUNERATION_DATA_search.sql" />
+    <Build Include="Programming\StoreProcedures\INCOME_DISCOUNT_insert_update_json.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
