@@ -146,6 +146,13 @@
     <Build Include="Programming\StoreProcedures\SUNAT_REMUNERATION_DATA_insert_update.sql" />
     <Build Include="Programming\StoreProcedures\SUNAT_REMUNERATION_DATA_search.sql" />
     <Build Include="Programming\StoreProcedures\INCOME_DISCOUNT_insert_update_json.sql" />
+    <Build Include="Programming\StoreProcedures\LABOR_TAX_DATA_insert_update_json.sql" />
+    <Build Include="Programming\StoreProcedures\SUNAT_REMUNERATION_DATA_insert_update_json.sql" />
+    <Build Include="Programming\StoreProcedures\SCTR_insert_update_json.sql" />
+    <Build Include="Tables\EMPLOYEE_COMPANY.sql" />
+    <Build Include="Programming\StoreProcedures\EMPLOYEE_COMPANY_find_all.sql" />
+    <Build Include="Programming\StoreProcedures\EMPLOYEE_COMPANY_insert_update.sql" />
+    <Build Include="Programming\StoreProcedures\EMPLOYEE_COMPANY_search.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

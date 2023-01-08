@@ -1,4 +1,4 @@
-﻿Create Procedure EMPLOYEES.EMPLOYEE_search
+﻿Create Procedure EMPLOYEES.EMPLOYEE_COMPANY_search
 (
      @pit_parametrosXML		ntext,
      @piv_orderBy			varchar(100)
@@ -9,12 +9,12 @@ As
 Declare @sqlBody varchar(max),@sqlJoin varchar(max),@sqlWhere varchar(max);
 
 -- VARIABLES DE FILTRO
-Declare @docXML int,@pii_employee_id INT, @code VARCHAR(20);
+Declare @docXML int,@pii_employee_id INT, @company_id INT;
 
 Begin
 
-	--EXECUTE EMPLOYEES.EMPLOYEE_search '<Record> <employee_id>1</employee_id> </Record>', '';
-	--EXECUTE EMPLOYEES.EMPLOYEE_search '<Record> <code>1</code> </Record>', '';
+	--EXECUTE EMPLOYEES.EMPLOYEE_COMPANY_search '<Record> <employee_id>1</employee_id> </Record>', '';
+
 	--INICIALIZO LAS VARIABLES
   Begin
 
@@ -39,17 +39,17 @@ Begin
 			Set @pii_employee_id = 0;
 		End Catch;
 
-		--code
+		--company_id
 		Begin Try
-			Set @code = 
+			Set @company_id = 
 			(
-				Select code
+				Select company_id
 				From OpenXML (@docXML, 'Record',2)
-				With (code VARCHAR(20))
+				With (company_id int)
 			);
 		End Try
 		Begin Catch
-			Set @code = '';
+			Set @company_id = 0;
 		End Catch;
 
 	End;
@@ -62,20 +62,16 @@ Begin
 			Set @sqlBody = '
 			Select
 			DB.employee_id			[employee_id],
-			DB.code			[code],
-			DB.name			[name],
-			DB.father_last_name			[father_last_name],
-			DB.mother_last_name			[mother_last_name],
-			DB.category_name			[category_name],
-			DB.situation_id			[situation_id],
+			DB.company_id			[company_id],
+			DB.state			[state],
 			DB.register_user_id			[register_user_id],
 			DB.register_user_fullname			[register_user_fullname],
-			DB.register_update			[register_update],
+			DB.register_datetime			[register_datetime],
 			DB.update_user_id			[update_user_id],
 			DB.update_user_fullname			[update_user_fullname],
 			DB.update_datetime			[update_datetime]'
 			Set @sqlJoin = '
-			From EMPLOYEES.EMPLOYEE [DB]'
+			From EMPLOYEES.EMPLOYEE_COMPANY [DB]'
 		End;
 		--WHERE SQL
 		Begin
@@ -90,11 +86,11 @@ Begin
 				And DB.employee_id = ' + Cast(@pii_employee_id As Varchar) + ''
 			End;
 
-			--code
-			If @code <> ''
+			--company_id
+			If @company_id > 0
 			Begin
 				Set @sqlWhere = @sqlWhere + '
-				And DB.code = ''' + Cast(@code As Varchar) + ''''
+				And DB.company_id = ' + Cast(@company_id As Varchar) + ''
 			End;
 		End;
 
