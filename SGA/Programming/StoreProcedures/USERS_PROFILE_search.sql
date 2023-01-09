@@ -9,7 +9,7 @@ As
 Declare @sqlBody varchar(max),@sqlJoin varchar(max),@sqlWhere varchar(max);
 
 -- VARIABLES DE FILTRO
-Declare @docXML int,@pii_user_id int
+Declare @docXML int,@pii_user_id INT, @profile_id INT, @system_id INT;
 
 Begin
 
@@ -39,6 +39,32 @@ Begin
 			Set @pii_user_id = 0;
 		End Catch;
 
+		--profile_id
+		Begin Try
+			Set @profile_id = 
+			(
+				Select profile_id
+				From OpenXML (@docXML, 'Record',2)
+				With (profile_id int)
+			);
+		End Try
+		Begin Catch
+			Set @profile_id = 0;
+		End Catch;
+
+		--system_id
+		Begin Try
+			Set @system_id = 
+			(
+				Select system_id
+				From OpenXML (@docXML, 'Record',2)
+				With (system_id int)
+			);
+		End Try
+		Begin Catch
+			Set @system_id = 0;
+		End Catch;
+
 	End;
 
 	--CONSTRUYO LA CONSULTA SQL
@@ -50,6 +76,7 @@ Begin
 			Select
 			DB.user_id			[user_id],
 			DB.profile_id			[profile_id],
+			P.system_id				[system_id],
 			DB.register_user_id			[register_user_id],
 			DB.register_user_fullname			[register_user_fullname],
 			DB.register_datetime			[register_datetime],
@@ -57,7 +84,8 @@ Begin
 			DB.update_user_fullname			[update_user_fullname],
 			DB.update_datetime			[update_datetime]'
 			Set @sqlJoin = '
-			From SECURITY.USERS_PROFILE [DB]'
+			From SECURITY.USERS_PROFILE [DB]
+			INNER JOIN SECURITY.PROFILE P ON P.profile_id = DB.profile_id '
 		End;
 		--WHERE SQL
 		Begin
@@ -70,6 +98,20 @@ Begin
 			Begin
 				Set @sqlWhere = @sqlWhere + '
 				And DB.user_id = ' + Cast(@pii_user_id As Varchar) + ''
+			End;
+
+			--profile_id
+			If @profile_id > 0
+			Begin
+				Set @sqlWhere = @sqlWhere + '
+				And DB.profile_id = ' + Cast(@profile_id As Varchar) + ''
+			End;
+
+			--system_id
+			If @system_id > 0
+			Begin
+				Set @sqlWhere = @sqlWhere + '
+				And P.system_id = ' + Cast(@system_id As Varchar) + ''
 			End;
 		End;
 
