@@ -12,14 +12,14 @@ As
 Declare @sqlBody varchar(MAX),@sqlJoin varchar(MAX),@sqlWhere varchar(MAX),@sqlCount nvarchar(MAX);
 
 -- VARIABLES DE FILTRO
-Declare @docXML int,@pii_user_id int;
+Declare @docXML int,@pii_user_id INT, @user_name VARCHAR(200), @state int;
 
 -- VARIABLES DE PAGINACION
 Declare @paginaDesde varchar(10),@paginaHasta varchar(10);
 
 Begin
 
-	--EXECUTE SECURITY.USERS_find_all '<Record> <user_id>1</user_id> </Record>',0,0,'',NULL;
+	--EXECUTE SECURITY.USERS_find_all '<Record> <user_name>soto</user_name> </Record>',0,0,'',NULL;
 
 	--INICIALIZO LAS VARIABLES
 	Begin
@@ -49,6 +49,32 @@ Begin
 			Set @pii_user_id = 0;
 		End Catch;
 
+		--user_name
+		Begin Try
+			Set @user_name = 
+			(
+				Select user_name
+				From OpenXML (@docXML, 'Record',2)
+				With (user_name VARCHAR(200))
+			);
+		End Try
+		Begin Catch
+			Set @user_name = '';
+		End Catch;
+
+		--state
+		Begin Try
+			Set @state = 
+			(
+				Select state
+				From OpenXML (@docXML, 'Record',2)
+				With (state int)
+			);
+		End Try
+		Begin Catch
+			Set @state = 0;
+		End Catch;
+
 	End;
 
 	--CONSTRUYO LA CONSULTA SQL
@@ -68,6 +94,7 @@ Begin
 			DB.password			[password],
 			DB.reset_password			[reset_password],
 			DB.state			[state],
+			PD.description		[state_name],
 			DB.register_user_id			[register_user_id],
 			DB.register_user_fullname			[register_user_fullname],
 			DB.register_datetime			[register_datetime],
@@ -75,7 +102,8 @@ Begin
 			DB.update_user_fullname			[update_user_fullname],
 			DB.update_datetime			[update_datetime]'
 			Set @sqlJoin = '
-			From SECURITY.USERS [DB]'
+			From SECURITY.USERS [DB]
+			INNER JOIN SECURITY.PARAMETER_DETAIL PD ON db.state = pd.parameter_detail_id '
 		End;
 		--WHERE SQL
 		Begin
@@ -89,6 +117,21 @@ Begin
 				Set @sqlWhere = @sqlWhere + '
 				And DB.user_id = ' + Cast(@pii_user_id As Varchar) + ''
 			End;
+
+			--user_name
+			If @user_name <> ''
+			Begin
+				Set @sqlWhere = @sqlWhere + '
+				And DB.user_name + SPACE(1) + DB.father_last_name + SPACE(1) + DB.mother_last_name  Like ''%' + Cast(@user_name As VARCHAR(200)) + '%'''
+			End;
+
+			--state
+			If @state > 0
+			Begin
+				Set @sqlWhere = @sqlWhere + '
+				And DB.state = ' + Cast(@state As Varchar) + ''
+			End;
+
 		End;
 
 		--ORDER BY
@@ -107,7 +150,7 @@ Begin
 	--EJECUTO LA CONSULTA SQL
 	Begin
 
-		--Print(@sqlBody + @sqlJoin + @sqlWhere + @piv_orderBy);
+		Print(@sqlBody + @sqlJoin + @sqlWhere + @piv_orderBy);
 
 		If @pii_paginaActual > 0 --CONSULTA CON PAGINACION
 		Begin

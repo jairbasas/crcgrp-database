@@ -103,5 +103,6 @@
     <Build Include="Programming\StoreProcedures\PROFILE_MENU_delete_by_profile.sql" />
     <Build Include="Programming\StoreProcedures\USERS_change_password.sql" />
     <Build Include="Programming\StoreProcedures\USERS_change_state.sql" />
+    <Build Include="Programming\StoreProcedures\PROFILE_MENU_delete.sql" />
   </ItemGroup>
 </Project>

@@ -12,7 +12,7 @@ As
 Declare @sqlBody varchar(MAX),@sqlJoin varchar(MAX),@sqlWhere varchar(MAX),@sqlCount nvarchar(MAX);
 
 -- VARIABLES DE FILTRO
-Declare @docXML int,@pii_profile_id int;
+Declare @docXML int,@pii_profile_id INT, @profile_name VARCHAR(100), @state int;
 
 -- VARIABLES DE PAGINACION
 Declare @paginaDesde varchar(10),@paginaHasta varchar(10);
@@ -49,6 +49,32 @@ Begin
 			Set @pii_profile_id = 0;
 		End Catch;
 
+		--profile_name
+		Begin Try
+			Set @profile_name = 
+			(
+				Select profile_name
+				From OpenXML (@docXML, 'Record',2)
+				With (profile_name VARCHAR(100))
+			);
+		End Try
+		Begin Catch
+			Set @profile_name = '';
+		End Catch;
+
+		--state
+		Begin Try
+			Set @state = 
+			(
+				Select state
+				From OpenXML (@docXML, 'Record',2)
+				With (state int)
+			);
+		End Try
+		Begin Catch
+			Set @state = 0;
+		End Catch;
+
 	End;
 
 	--CONSTRUYO LA CONSULTA SQL
@@ -61,6 +87,7 @@ Begin
 			DB.profile_id			[profile_id],
 			DB.profile_name			[profile_name],
 			DB.state			[state],
+			PD.description		[state_name],
 			DB.system_id			[system_id],
 			DB.register_user_id			[register_user_id],
 			DB.register_user_fullname			[register_user_fullname],
@@ -69,7 +96,8 @@ Begin
 			DB.update_user_fullname			[update_user_fullname],
 			DB.update_datetime			[update_datetime]'
 			Set @sqlJoin = '
-			From SECURITY.PROFILE [DB]'
+			From SECURITY.PROFILE [DB]
+			INNER JOIN SECURITY.PARAMETER_DETAIL PD ON pd.parameter_detail_id = DB.state '
 		End;
 		--WHERE SQL
 		Begin
@@ -82,6 +110,20 @@ Begin
 			Begin
 				Set @sqlWhere = @sqlWhere + '
 				And DB.profile_id = ' + Cast(@pii_profile_id As Varchar) + ''
+			End;
+
+			--profile_name
+			If @profile_name <> ''
+			Begin
+				Set @sqlWhere = @sqlWhere + '
+				And DB.profile_name Like ''%' + Cast(@profile_name As VARCHAR(100)) + '%'''
+			End;
+
+			--state
+			If @state > 0
+			Begin
+				Set @sqlWhere = @sqlWhere + '
+				And DB.state = ' + Cast(@state As Varchar) + ''
 			End;
 		End;
 
