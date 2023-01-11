@@ -50,6 +50,7 @@ Begin
 			Select
 			DB.profile_id			[profile_id],
 			DB.menu_id			[menu_id],
+			M.menu_parent_id	[menu_parent_id],
 			DB.register_user_id			[register_user_id],
 			DB.register_user_fullname			[register_user_fullname],
 			DB.register_datetime			[register_datetime],
@@ -57,7 +58,8 @@ Begin
 			DB.update_user_fullname			[update_user_fullname],
 			DB.update_datetime			[update_datetime]'
 			Set @sqlJoin = '
-			From SECURITY.PROFILE_MENU [DB]'
+			From SECURITY.PROFILE_MENU [DB]
+			INNER JOIN SECURITY.MENU M ON M.menu_id = DB.menu_id '
 		End;
 		--WHERE SQL
 		Begin
